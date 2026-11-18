@@ -1,0 +1,12 @@
+DATA QUALITY NOTES
+
+The dataset contains 45 response rows reconstructed from the supplied response PDF.
+The earlier report draft stated 42 responses. Use the included dataset and regenerated
+statistics consistently, and update the report accordingly.
+
+The answer 'I go to college through walking' occurs in the commute-problem field.
+It is retained as supplied because its intended meaning is ambiguous.
+The multi-select answer 'Dont have' is also retained without interpretation.
+
+The cleaned dataset standardizes whitespace, gender capitalization and comma spacing.
+No respondent records have been fabricated or deleted.
