@@ -1,0 +1,46 @@
+Timestamp,What is your current year of study?,What is your gender? (Optional),What is your primary mode of transportation to college?,How far is your residence from college?,How long does your daily journey to college usually take?,How much do you spend on transportation per day?,What is the most important factor when choosing transportation?,How satisfied are you with your current mode of transportation?,What is the biggest problem you face during your commute?,Would you consider using public transportation more often if it were cheaper and more reliable?
+27/10/2026 20:49:02,2nd Year,male,Public bus,More than 10 km,30–60 minutes,More than ₹100,"Cost, Travel time, Comfort, Safety, Convenience",3,Overcrowding,Maybe
+27/10/2026 20:56:28,2nd Year,male,Walking,Less than 2 km,Less than 15 minutes,₹0–₹30,Convenience,2,Delays,Yes
+27/10/2026 20:57:01,1st Year,Female,Car,Less than 2 km,Less than 15 minutes,More than ₹100,"Travel time, Comfort, Safety, Convenience",5,No major problems,Yes
+27/10/2026 20:59:31,2nd Year,male,Public bus,More than 10 km,30–60 minutes,₹61–₹100,"Comfort, Safety",3,Overcrowding,Maybe
+27/10/2026 21:03:28,2nd Year,male,Walking,Less than 2 km,Less than 15 minutes,₹0–₹30,Comfort,5,No major problems,Yes
+27/10/2026 21:04:07,2nd Year,male,Walking,2–5 km,Less than 15 minutes,₹0–₹30,Comfort,5,No major problems,Maybe
+27/10/2026 21:04:11,2nd Year,male,Walking,Less than 2 km,15–30 minutes,₹0–₹30,Travel time,3,No major problems,Yes
+27/10/2026 21:04:22,2nd Year,male,Public bus,More than 10 km,More than 60 minutes,₹61–₹100,Convenience,4,Overcrowding,Yes
+27/10/2026 21:06:50,2nd Year,male,College bus,More than 10 km,More than 60 minutes,₹61–₹100,Comfort,4,Overcrowding,Yes
+27/10/2026 21:06:51,2nd Year,male,Walking,Less than 2 km,Less than 15 minutes,₹0–₹30,Convenience,5,No major problems,Yes
+27/10/2026 21:07:21,3rd Year,Female,Walking,Less than 2 km,Less than 15 minutes,₹0–₹30,Travel time,5,No major problems,Maybe
+27/10/2026 21:07:34,2nd Year,male,Walking,Less than 2 km,Less than 15 minutes,₹0–₹30,Convenience,5,No major problems,Maybe
+27/10/2026 21:09:22,2nd Year,male,College bus,More than 10 km,More than 60 minutes,More than ₹100,"Safety,",2,Not Comfortable,No
+27/10/2026 21:09:27,3rd Year,male,Walking,Less than 2 km,Less than 15 minutes,₹0–₹30,Safety,5,Overcrowding,Yes
+27/10/2026 21:09:28,2nd Year,male,Walking,Less than 2 km,Less than 15 minutes,₹0–₹30,"Travel time, Safety",5,Overcrowding,Yes
+27/10/2026 21:12:02,2nd Year,male,Public bus,More than 10 km,30–60 minutes,₹31–₹60,Comfort,2,Overcrowding,No
+27/10/2026 21:13:04,2nd Year,male,Car,More than 10 km,30–60 minutes,More than ₹100,Comfort,5,High transportation cost,Maybe
+27/10/2026 21:15:48,2nd Year,Female,Walking,Less than 2 km,Less than 15 minutes,₹0–₹30,Comfort,4,No major problems,Yes
+27/10/2026 21:18:29,2nd Year,male,Walking,Less than 2 km,Less than 15 minutes,₹0–₹30,Cost,3,Overcrowding,Yes
+27/10/2026 21:30:06,2nd Year,male,Walking,Less than 2 km,Less than 15 minutes,₹0–₹30,Comfort,1,Lack of transport availability,Yes
+27/10/2026 21:34:17,2nd Year,male,Walking,Less than 2 km,Less than 15 minutes,₹0–₹30,"Cost, Travel time, Comfort",5,Lack of transport availability,Yes
+27/10/2026 21:51:50,2nd Year,Female,College bus,More than 10 km,More than 60 minutes,₹61–₹100,"Cost, Travel time, Comfort, Safety, Convenience",1,Lack of transport availability,Yes
+27/10/2026 22:00:02,2nd Year,male,College bus,More than 10 km,30–60 minutes,₹61–₹100,"Cost, Travel time, Comfort, Safety, Convenience",3,No major problems,Yes
+27/10/2026 22:01:19,2nd Year,male,Public bus,More than 10 km,More than 60 minutes,₹61–₹100,"Cost, Travel time, Comfort, Safety, Convenience",4,Overcrowding,Yes
+27/10/2026 22:03:14,2nd Year,male,Walking,Less than 2 km,15–30 minutes,₹0–₹30,"Cost, Travel time",4,No major problems,Maybe
+27/10/2026 22:39:29,2nd Year,male,College bus,More than 10 km,More than 60 minutes,₹61–₹100,"Comfort, Safety",4,Delays,Maybe
+28/10/2026 07:29:17,2nd Year,male,Two-wheeler,2–5 km,15–30 minutes,₹61–₹100,"Cost, Travel time, Comfort, Safety, Convenience",4,Traffic congestion,Yes
+28/10/2026 08:06:27,2nd Year,male,Public bus,More than 10 km,30–60 minutes,₹31–₹60,Convenience,1,Overcrowding,Yes
+28/10/2026 08:07:19,2nd Year,male,Public bus,More than 10 km,More than 60 minutes,More than ₹100,"Cost, Travel time, Comfort, Safety, Convenience",3,Overcrowding,Yes
+28/10/2026 08:13:52,2nd Year,male,Walking,Less than 2 km,Less than 15 minutes,₹0–₹30,Dont have,5,No major problems,No
+28/10/2026 10:49:37,2nd Year,Female,Auto-rickshaw / Cab,Less than 2 km,Less than 15 minutes,₹61–₹100,Comfort,3,Traffic congestion,No
+28/10/2026 12:21:31,2nd Year,male,Car,More than 10 km,30–60 minutes,More than ₹100,Comfort,4,High transportation cost,Yes
+28/10/2026 12:55:43,2nd Year,male,Public bus,More than 10 km,30–60 minutes,₹31–₹60,Convenience,3,Overcrowding,Maybe
+28/10/2026 12:56:25,2nd Year,male,Public bus,More than 10 km,30–60 minutes,₹31–₹60,Convenience,2,Delays,No
+28/10/2026 12:59:40,2nd Year,male,Car,More than 10 km,30–60 minutes,More than ₹100,"Travel time, Comfort, Safety",4,Traffic congestion,Maybe
+28/10/2026 19:17:54,2nd Year,male,College bus,More than 10 km,More than 60 minutes,More than ₹100,Convenience,5,Traffic congestion,Maybe
+28/10/2026 20:15:16,2nd Year,male,Public bus,5–10 km,15–30 minutes,₹31–₹60,"Travel time, Comfort, Convenience",4,Overcrowding,Yes
+28/10/2026 20:39:44,2nd Year,male,Two-wheeler,2–5 km,15–30 minutes,More than ₹100,"Cost, Travel time, Comfort, Safety, Convenience",4,Traffic congestion,Yes
+28/10/2026 22:14:19,2nd Year,male,Walking,Less than 2 km,Less than 15 minutes,₹0–₹30,"Cost, Travel time",5,No major problems,Maybe
+28/10/2026 22:19:46,2nd Year,male,Walking,Less than 2 km,Less than 15 minutes,₹0–₹30,"Travel time, Comfort, Safety",5,No major problems,Maybe
+28/10/2026 22:22:23,1st Year,male,Public bus,5–10 km,30–60 minutes,₹31–₹60,"Cost, Travel time, Comfort, Safety, Convenience",2,Traffic congestion,Yes
+28/10/2026 22:22:41,2nd Year,male,Walking,Less than 2 km,15–30 minutes,₹0–₹30,"Comfort, Safety",5,Traffic congestion,Maybe
+28/10/2026 23:21:35,2nd Year,male,Walking,Less than 2 km,Less than 15 minutes,₹0–₹30,Travel time,5,I go to college through walking,Yes
+29/10/2026 09:35:43,2nd Year,male,Public bus,More than 10 km,15–30 minutes,₹31–₹60,"Travel time, Convenience",4,Delays,Yes
+29/10/2026 18:11:10,2nd Year,male,Walking,Less than 2 km,Less than 15 minutes,₹0–₹30,"Cost, Travel time, Convenience",4,No major problems,Maybe
