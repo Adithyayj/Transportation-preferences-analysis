@@ -58,3 +58,8 @@ requirements.txt
 ```
 
 **Academic integrity:** percentages and observations are calculated from the included 45-row dataset. No claim is made that the sample is random or representative.
+
+
+## Automated run
+
+GitHub Actions runs the analysis on pushes and pull requests targeting `main`. Each successful run stores the generated charts, tables and summary as an artifact named **`transportation-analysis-outputs`** for 14 days. Open the repository's **Actions** tab, select a successful run and download the artifact.
