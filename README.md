@@ -49,12 +49,27 @@ This runs cleaning, descriptive analysis, and statistical summaries. It creates 
 
 ## Repository structure
 ```text
-data/       raw_data.csv, cleaned_data.csv
-src/        clean_data.py, generate_eda.py, statistical_analysis.py
-outputs/    charts/, frequency_tables.csv, statistical_analysis.txt,
-            distance_vs_travel_time.csv, data_quality_notes.txt
-run_project.py
-requirements.txt
+.
+├── .github/
+│   └── workflows/
+│       └── analysis.yml
+├── data/
+│   ├── raw_data.csv
+│   └── cleaned_data.csv
+├── src/
+│   ├── clean_data.py
+│   ├── generate_eda.py
+│   └── statistical_analysis.py
+├── outputs/
+│   ├── charts/                  # Generated PNG charts
+│   ├── data_quality_notes.txt
+│   ├── distance_vs_travel_time.csv
+│   ├── frequency_tables.csv
+│   └── statistical_analysis.txt
+├── .gitignore
+├── README.md
+├── requirements.txt
+└── run_project.py
 ```
 
 **Academic integrity:** percentages and observations are calculated from the included 45-row dataset. No claim is made that the sample is random or representative.
