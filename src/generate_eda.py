@@ -22,26 +22,39 @@ C = {
     "public": "Would you consider using public transportation more often if it were cheaper and more reliable?"
 }
 
+
 def categorical_chart(series, title, xlabel, filename, rotation=0):
     counts = series.value_counts(dropna=False)
     pct = counts / len(df) * 100
-    fig, ax = plt.subplots(figsize=(9, 5.5))
-    bars = ax.bar(counts.index.astype(str), pct)
+    use_horizontal = len(counts) >= 7 or max(map(len, counts.index.astype(str))) >= 20
+    fig, ax = plt.subplots(figsize=(10, 6.5 if use_horizontal else 5.5))
+    if use_horizontal:
+        pct = pct.sort_values(ascending=True)
+        bars = ax.barh(pct.index.astype(str), pct.values)
+        ax.set_xlabel("Respondents (%)")
+        ax.set_ylabel(xlabel)
+        ax.grid(axis="x", alpha=.25)
+        for bar, value in zip(bars, pct.values):
+            ax.annotate(f"{value:.1f}%", (bar.get_width(), bar.get_y()+bar.get_height()/2),
+                        xytext=(5, 0), textcoords="offset points", va="center", fontsize=8)
+    else:
+        bars = ax.bar(pct.index.astype(str), pct.values)
+        ax.set_xlabel(xlabel)
+        ax.set_ylabel("Respondents (%)")
+        ax.tick_params(axis="x", rotation=rotation)
+        if rotation:
+            for label in ax.get_xticklabels():
+                label.set_ha("right")
+        ax.grid(axis="y", alpha=.25)
+        for bar, value in zip(bars, pct.values):
+            ax.annotate(f"{value:.1f}%", (bar.get_x()+bar.get_width()/2, bar.get_height()),
+                        xytext=(0, 4), textcoords="offset points", ha="center", fontsize=8)
     ax.set_title(title, fontsize=13)
-    ax.set_xlabel(xlabel)
-    ax.set_ylabel("Respondents (%)")
-    ax.tick_params(axis="x", rotation=rotation)
-    if rotation:
-        for label in ax.get_xticklabels():
-            label.set_ha("right")
-    ax.grid(axis="y", alpha=.25)
     ax.set_axisbelow(True)
-    for bar, value in zip(bars, pct):
-        ax.annotate(f"{value:.1f}%", (bar.get_x()+bar.get_width()/2, bar.get_height()),
-                    xytext=(0, 4), textcoords="offset points", ha="center", fontsize=8)
     fig.tight_layout()
     fig.savefig(OUT / filename, dpi=180, bbox_inches="tight")
     plt.close(fig)
+
 
 categorical_chart(df[C["mode"]], "Primary Mode of Transportation", "Transport mode", "01_transport_modes.png", 25)
 categorical_chart(df[C["year"]], "Respondents by Year of Study", "Year", "02_year_of_study.png")
@@ -57,7 +70,8 @@ categorical_chart(df[C["public"]], "Willingness to Use Public Transportation Mor
 # Expand the multiple-selection question. Count each factor at most once per respondent.
 factor_counts = {}
 for answer in df[C["factors"]].dropna():
-    for factor in set(part.strip() for part in str(answer).split(",") if part.strip()):
+    # Count each selected factor once per respondent, preserving stable option order.
+    for factor in dict.fromkeys(part.strip() for part in str(answer).split(",") if part.strip()):
         factor_counts[factor] = factor_counts.get(factor, 0) + 1
 factor_series = pd.Series(factor_counts).sort_values(ascending=False)
 fig, ax = plt.subplots(figsize=(9, 5.5))
