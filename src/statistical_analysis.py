@@ -45,7 +45,6 @@ for label, column in columns.items():
         summary.append(f"- {category}: {count} ({count/N*100:.1f}%)")
 
 combined = pd.concat(tables, ignore_index=True)
-combined.to_csv(OUT / "frequency_tables.csv", index=False)
 
 sat_col = "How satisfied are you with your current mode of transportation?"
 sat = pd.to_numeric(df[sat_col], errors="coerce").dropna()
@@ -63,15 +62,26 @@ summary += [
 factor_col = "What is the most important factor when choosing transportation?"
 factor_counts = {}
 for answer in df[factor_col].dropna():
-    for factor in set(p.strip() for p in str(answer).split(",") if p.strip()):
+    for factor in dict.fromkeys(p.strip() for p in str(answer).split(",") if p.strip()):
         factor_counts[factor] = factor_counts.get(factor, 0) + 1
-for factor, count in sorted(factor_counts.items(), key=lambda x: x[1], reverse=True):
+factor_table = pd.DataFrame([
+    {
+        "Variable": "Transportation-choice factor (multi-select)",
+        "Category": factor,
+        "Count": count,
+        "Percentage": round(count / N * 100, 1),
+    }
+    for factor, count in sorted(factor_counts.items(), key=lambda item: (-item[1], item[0]))
+])
+combined = pd.concat([combined, factor_table], ignore_index=True)
+combined.to_csv(OUT / "frequency_tables.csv", index=False)
+for factor, count in sorted(factor_counts.items(), key=lambda x: (-x[1], x[0])):
     summary.append(f"- {factor}: {count} ({count/N*100:.1f}%)")
 
 summary += [
     "",
     "INTERPRETATION AND LIMITATIONS",
-    "- This is a descriptive analysis of 45 response records reconstructed from a PDF.",
+    f"- This is a descriptive analysis of {N} response records reconstructed from a PDF.",
     "- The sample is highly concentrated in 2nd Year students; it is not representative",
     "  evidence for the entire college population.",
     "- Categorical survey answers are summarized using counts, percentages and cross-tabs.",
