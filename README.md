@@ -10,7 +10,7 @@ This mini-project examines transportation choices, travel distance and time, dai
 **Project Guide:** Dr. Vandana B S, Associate Professor
 
 ## Dataset
-The repository includes 45 response records and 11 columns. `data/raw_data.csv` preserves the extracted source responses; `data/cleaned_data.csv` is produced by the cleaning script. The Google Form was not available for direct export, so the 45 rows were reconstructed from the supplied PDF of individual responses. The earlier report draft stated 42 responses and should be updated to reflect this dataset.
+The repository includes 45 response records and 11 columns. `data/raw_data.csv` preserves the extracted source responses; `data/cleaned_data.csv` is produced by the cleaning script. The Google Form was not available for direct export, so the 45 rows were reconstructed from the supplied PDF of individual responses. The earlier report draft stated 42 responses. The revised report uses the verified 45 response records in this dataset.
 
 ## Run
 Python 3.9 or later:
