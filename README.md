@@ -25,6 +25,14 @@ The model predicts whether a respondent would consider using public transportati
 
 The dataset has only 45 responses, including just five `No` answers. Cross-validation scores are therefore highly uncertain; treat this as a demonstration, not a reliable predictor for students outside this survey. To make predictions in Python:
 
+To enter a new response interactively in the terminal, run:
+
+```bash
+python -m transportation_analysis.predict
+```
+
+Answer the prompts using your own values; type `quit` at any prompt to cancel. The model accepts new category values, and validates the satisfaction rating as a whole number from 1 to 5.
+
 ```python
 from transportation_analysis.train_model import load_model, predict_intention
 

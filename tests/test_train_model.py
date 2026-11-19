@@ -10,6 +10,7 @@ from transportation_analysis.train_model import (
     predict_intention,
     train_model,
 )
+from transportation_analysis.predict import collect_response
 
 
 class TrainModelTests(unittest.TestCase):
@@ -52,6 +53,36 @@ class TrainModelTests(unittest.TestCase):
         }
         with self.assertRaisesRegex(ValueError, "Missing required model input columns"):
             predict_intention(bundle, {"year": "2nd Year"})
+
+    def test_interactive_response_validates_satisfaction_rating(self):
+        answers = iter(
+            [
+                "2nd Year",
+                "Female",
+                "Public bus",
+                "5-10 km",
+                "30-60 minutes",
+                "31-60",
+                "Cost, Safety",
+                "6",
+                "4",
+                "Delays",
+            ]
+        )
+        messages = []
+        response = collect_response(
+            input_fn=lambda prompt: next(answers),
+            output_fn=messages.append,
+        )
+
+        self.assertEqual(len(response), 9)
+        self.assertEqual(
+            response["How satisfied are you with your current mode of transportation?"],
+            "4",
+        )
+        self.assertTrue(
+            any("rating from 1 to 5" in message for message in messages)
+        )
 
 
 if __name__ == "__main__":
