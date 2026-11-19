@@ -3,9 +3,10 @@ from pathlib import Path
 import pandas as pd
 import matplotlib.pyplot as plt
 
-ROOT = Path(__file__).resolve().parents[1]
-DATA = ROOT / "data" / "cleaned_data.csv"
-OUT = ROOT / "outputs" / "charts"
+ROOT = Path(__file__).resolve().parents[2]
+DATA = ROOT / "data" / "processed" / "cleaned_data.csv"
+OUT = ROOT / "outputs" / "figures"
+TABLES = ROOT / "outputs" / "tables"
 OUT.mkdir(parents=True, exist_ok=True)
 df = pd.read_csv(DATA)
 
@@ -92,7 +93,8 @@ fig.savefig(OUT / "10_transport_choice_factors.png", dpi=180, bbox_inches="tight
 plt.close(fig)
 
 cross = pd.crosstab(df[C["distance"]], df[C["time"]])
-cross.to_csv(ROOT / "outputs" / "distance_vs_travel_time.csv")
+TABLES.mkdir(parents=True, exist_ok=True)
+cross.to_csv(TABLES / "distance_vs_travel_time.csv")
 ax = cross.plot(kind="bar", stacked=True, figsize=(9, 5.5))
 ax.set_title("Travel Time by Distance from College")
 ax.set_xlabel("Distance from residence to college")

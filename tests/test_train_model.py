@@ -4,7 +4,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from src.train_model import (
+from transportation_analysis.train_model import (
     TARGET_COLUMN,
     load_model,
     predict_intention,
@@ -29,9 +29,13 @@ class TrainModelTests(unittest.TestCase):
             data.to_csv(data_path, index=False)
             train_model(data_path=data_path, output_dir=directory)
 
-            model_path = Path(directory) / "public_transport_intention_model.joblib"
+            model_path = (
+                Path(directory)
+                / "models"
+                / "public_transport_intention_model.joblib"
+            )
             self.assertTrue(model_path.exists())
-            self.assertTrue((Path(directory) / "model_evaluation.txt").exists())
+            self.assertTrue((Path(directory) / "reports" / "model_evaluation.txt").exists())
 
             result = predict_intention(
                 load_model(model_path),

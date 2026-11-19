@@ -10,23 +10,23 @@ This mini-project examines transportation choices, travel distance and time, dai
 **Project Guide:** Dr. Vandana B S, Associate Professor
 
 ## Dataset
-The repository includes 45 response records and 11 columns. `data/raw_data.csv` preserves the extracted source responses; `data/cleaned_data.csv` is produced by the cleaning script. The Google Form was not available for direct export, so the 45 rows were reconstructed from the supplied PDF of individual responses. The earlier report draft stated 42 responses. The revised report uses the verified 45 response records in this dataset.
+The repository includes 45 response records and 11 columns. `data/raw/raw_data.csv` preserves the extracted source responses; `data/processed/cleaned_data.csv` is produced by the cleaning step. The Google Form was not available for direct export, so the 45 rows were reconstructed from the supplied PDF of individual responses. The earlier report draft stated 42 responses. The revised report uses the verified 45 response records in this dataset.
 
 ## Run
 Python 3.9 or later:
 ```bash
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 python run_project.py
 ```
-This runs cleaning, descriptive analysis, statistical summaries, and an exploratory machine-learning model. It creates 11 charts under `outputs/charts/`, frequency/cross-tabulation outputs, model evaluation metrics, and a saved model in `outputs/`.
+This installs the project and its dependencies, then runs cleaning, descriptive analysis, statistical summaries, and an exploratory machine-learning model. It creates 11 charts under `outputs/figures/`, frequency/cross-tabulation outputs under `outputs/tables/`, reports under `outputs/reports/`, and a saved model under `outputs/models/`.
 
 ## Exploratory machine-learning model
-The model predicts whether a respondent would consider using public transportation more often if it were cheaper and more reliable (`Yes`, `Maybe`, or `No`). It uses the other survey answers as categorical predictors, one-hot encoding, and balanced logistic regression. Five-fold stratified cross-validation compares macro F1 with a most-frequent-class baseline. The fitted model is saved as `outputs/public_transport_intention_model.joblib`; evaluation details are written to `outputs/model_evaluation.txt`.
+The model predicts whether a respondent would consider using public transportation more often if it were cheaper and more reliable (`Yes`, `Maybe`, or `No`). It uses the other survey answers as categorical predictors, one-hot encoding, and balanced logistic regression. Five-fold stratified cross-validation compares macro F1 with a most-frequent-class baseline. The fitted model is saved as `outputs/models/public_transport_intention_model.joblib`; evaluation details are written to `outputs/reports/model_evaluation.txt`.
 
 The dataset has only 45 responses, including just five `No` answers. Cross-validation scores are therefore highly uncertain; treat this as a demonstration, not a reliable predictor for students outside this survey. To make predictions in Python:
 
 ```python
-from src.train_model import load_model, predict_intention
+from transportation_analysis.train_model import load_model, predict_intention
 
 model = load_model()
 result = predict_intention(model, {
@@ -77,19 +77,24 @@ print(result[0])
 │   └── workflows/
 │       └── analysis.yml
 ├── data/
-│   ├── raw_data.csv
-│   └── cleaned_data.csv
-├── src/
-│   ├── clean_data.py
-│   ├── generate_eda.py
-│   └── statistical_analysis.py
+│   ├── raw/
+│   │   └── raw_data.csv
+│   └── processed/
+│       └── cleaned_data.csv
 ├── outputs/
-│   ├── charts/                  # Generated PNG charts
-│   ├── data_quality_notes.txt
-│   ├── distance_vs_travel_time.csv
-│   ├── frequency_tables.csv
-│   └── statistical_analysis.txt
+│   ├── figures/
+│   ├── models/
+│   ├── reports/
+│   └── tables/
+├── src/
+│   └── transportation_analysis/
+│       ├── clean_data.py
+│       ├── generate_eda.py
+│       ├── statistical_analysis.py
+│       └── train_model.py
+├── tests/
 ├── .gitignore
+├── pyproject.toml
 ├── README.md
 ├── requirements.txt
 └── run_project.py
@@ -100,4 +105,4 @@ print(result[0])
 
 ## Automated run
 
-GitHub Actions runs the analysis on pushes and pull requests targeting `main`. The chart PNGs are generated during the run rather than committed to `main`. Each successful run stores the generated charts, tables and summary as an artifact named **`transportation-analysis-outputs`** for 14 days. Open the repository's **Actions** tab, select a successful run and download the artifact.
+GitHub Actions runs the tests and analysis on pushes and pull requests targeting `main`. The chart PNGs are generated during the run rather than committed to `main`. Each successful run stores the generated charts, tables, reports, model and cleaned dataset as an artifact named **`transportation-analysis-outputs`** for 14 days. Open the repository's **Actions** tab, select a successful run and download the artifact.

@@ -2,9 +2,9 @@
 from pathlib import Path
 import pandas as pd
 
-ROOT = Path(__file__).resolve().parents[1]
-INPUT = ROOT / "data" / "raw_data.csv"
-OUTPUT = ROOT / "data" / "cleaned_data.csv"
+ROOT = Path(__file__).resolve().parents[2]
+INPUT = ROOT / "data" / "raw" / "raw_data.csv"
+OUTPUT = ROOT / "data" / "processed" / "cleaned_data.csv"
 GENDER_COLUMN = "What is your gender? (Optional)"
 FACTORS_COLUMN = "What is the most important factor when choosing transportation?"
 
@@ -51,6 +51,7 @@ def main():
         data[FACTORS_COLUMN] = data[FACTORS_COLUMN].map(normalize_multi_select)
 
     # Do not infer or rewrite ambiguous answers. They remain visible for review.
+    OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     data.to_csv(OUTPUT, index=False, encoding="utf-8")
     print(f"Saved {OUTPUT} ({len(data)} rows, {len(data.columns)} columns).")
 

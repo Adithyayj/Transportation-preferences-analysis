@@ -10,11 +10,11 @@ from sklearn.model_selection import StratifiedKFold, cross_val_score
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder
 
-ROOT = Path(__file__).resolve().parents[1]
-DATA = ROOT / "data" / "cleaned_data.csv"
+ROOT = Path(__file__).resolve().parents[2]
+DATA = ROOT / "data" / "processed" / "cleaned_data.csv"
 OUTPUT_DIR = ROOT / "outputs"
-MODEL_PATH = OUTPUT_DIR / "public_transport_intention_model.joblib"
-METRICS_PATH = OUTPUT_DIR / "model_evaluation.txt"
+MODEL_PATH = OUTPUT_DIR / "models" / "public_transport_intention_model.joblib"
+METRICS_PATH = OUTPUT_DIR / "reports" / "model_evaluation.txt"
 TARGET_COLUMN = (
     "Would you consider using public transportation more often if it were "
     "cheaper and more reliable?"
@@ -140,9 +140,10 @@ def train_model(data_path=DATA, output_dir=OUTPUT_DIR):
     }
 
     output_dir = Path(output_dir)
-    output_dir.mkdir(parents=True, exist_ok=True)
-    model_path = output_dir / MODEL_PATH.name
-    metrics_path = output_dir / METRICS_PATH.name
+    model_path = output_dir / "models" / MODEL_PATH.name
+    metrics_path = output_dir / "reports" / METRICS_PATH.name
+    model_path.parent.mkdir(parents=True, exist_ok=True)
+    metrics_path.parent.mkdir(parents=True, exist_ok=True)
     joblib.dump(model_bundle, model_path)
 
     class_counts = target.value_counts()

@@ -40,10 +40,10 @@ jobs:
         with:
           name: transportation-analysis-outputs
           path: |
-            outputs/charts/*.png
-            outputs/*.csv
-            outputs/*.txt
-            outputs/*.joblib
-            data/cleaned_data.csv
+            outputs/figures/*.png
+            outputs/tables/*.csv
+            outputs/reports/*.txt
+            outputs/models/*.joblib
+            data/processed/cleaned_data.csv
           if-no-files-found: error
           retention-days: 14

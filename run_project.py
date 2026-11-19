@@ -1,21 +1,25 @@
 """Run the complete transportation survey analysis pipeline."""
-from pathlib import Path
 import subprocess
 import sys
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-SCRIPTS = (
-    "src/clean_data.py",
-    "src/generate_eda.py",
-    "src/statistical_analysis.py",
-    "src/train_model.py",
+MODULES = (
+    "transportation_analysis.clean_data",
+    "transportation_analysis.generate_eda",
+    "transportation_analysis.statistical_analysis",
+    "transportation_analysis.train_model",
 )
 
 
 def main():
-    for script in SCRIPTS:
-        print(f"\nRunning {script} ...", flush=True)
-        subprocess.run([sys.executable, str(ROOT / script)], check=True, cwd=ROOT)
+    for module in MODULES:
+        print(f"\nRunning {module} ...", flush=True)
+        subprocess.run(
+            [sys.executable, "-m", module],
+            check=True,
+            cwd=ROOT,
+        )
     print("\nProject pipeline completed successfully. See the outputs/ folder.")
 
 

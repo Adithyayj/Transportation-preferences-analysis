@@ -2,10 +2,12 @@
 from pathlib import Path
 import pandas as pd
 
-ROOT = Path(__file__).resolve().parents[1]
-DATA = ROOT / "data" / "cleaned_data.csv"
-OUT = ROOT / "outputs"
-OUT.mkdir(exist_ok=True)
+ROOT = Path(__file__).resolve().parents[2]
+DATA = ROOT / "data" / "processed" / "cleaned_data.csv"
+TABLES = ROOT / "outputs" / "tables"
+REPORTS = ROOT / "outputs" / "reports"
+TABLES.mkdir(parents=True, exist_ok=True)
+REPORTS.mkdir(parents=True, exist_ok=True)
 df = pd.read_csv(DATA)
 N = len(df)
 
@@ -74,7 +76,7 @@ factor_table = pd.DataFrame([
     for factor, count in sorted(factor_counts.items(), key=lambda item: (-item[1], item[0]))
 ])
 combined = pd.concat([combined, factor_table], ignore_index=True)
-combined.to_csv(OUT / "frequency_tables.csv", index=False)
+combined.to_csv(TABLES / "frequency_tables.csv", index=False)
 for factor, count in sorted(factor_counts.items(), key=lambda x: (-x[1], x[0])):
     summary.append(f"- {factor}: {count} ({count/N*100:.1f}%)")
 
@@ -93,5 +95,7 @@ summary += [
     "  field is retained as submitted and should be mentioned as a data-quality limitation.",
     "- 'Dont have' in the multi-select factor field is also retained as submitted.",
 ]
-(OUT / "statistical_analysis.txt").write_text("\n".join(summary) + "\n", encoding="utf-8")
+(REPORTS / "statistical_analysis.txt").write_text(
+    "\n".join(summary) + "\n", encoding="utf-8"
+)
 print("Saved frequency_tables.csv and statistical_analysis.txt")
