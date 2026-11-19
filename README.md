@@ -18,7 +18,30 @@ Python 3.9 or later:
 pip install -r requirements.txt
 python run_project.py
 ```
-This runs cleaning, descriptive analysis, and statistical summaries. It creates 11 charts under `outputs/charts/` and frequency/cross-tabulation outputs in `outputs/`.
+This runs cleaning, descriptive analysis, statistical summaries, and an exploratory machine-learning model. It creates 11 charts under `outputs/charts/`, frequency/cross-tabulation outputs, model evaluation metrics, and a saved model in `outputs/`.
+
+## Exploratory machine-learning model
+The model predicts whether a respondent would consider using public transportation more often if it were cheaper and more reliable (`Yes`, `Maybe`, or `No`). It uses the other survey answers as categorical predictors, one-hot encoding, and balanced logistic regression. Five-fold stratified cross-validation compares macro F1 with a most-frequent-class baseline. The fitted model is saved as `outputs/public_transport_intention_model.joblib`; evaluation details are written to `outputs/model_evaluation.txt`.
+
+The dataset has only 45 responses, including just five `No` answers. Cross-validation scores are therefore highly uncertain; treat this as a demonstration, not a reliable predictor for students outside this survey. To make predictions in Python:
+
+```python
+from src.train_model import load_model, predict_intention
+
+model = load_model()
+result = predict_intention(model, {
+    "What is your current year of study?": "2nd Year",
+    "What is your gender? (Optional)": "Female",
+    "What is your primary mode of transportation to college?": "Public bus",
+    "How far is your residence from college?": "5–10 km",
+    "How long does your daily journey to college usually take?": "30–60 minutes",
+    "How much do you spend on transportation per day?": "₹31–₹60",
+    "What is the most important factor when choosing transportation?": "Cost, Safety",
+    "How satisfied are you with your current mode of transportation?": 3,
+    "What is the biggest problem you face during your commute?": "Delays",
+})
+print(result[0])
+```
 
 ## Analysis scope
 - Primary transport mode, year of study, and gender

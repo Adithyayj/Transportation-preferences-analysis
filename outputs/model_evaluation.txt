@@ -1,0 +1,16 @@
+EXPLORATORY PUBLIC-TRANSPORT-INTENTION MODEL
+Training responses: 45
+Target classes: 3
+Class counts:
+- Yes: 25
+- Maybe: 15
+- No: 5
+
+5-fold stratified cross-validation (macro F1):
+Logistic regression: 0.455 +/- 0.170
+Most-frequent-class baseline: 0.238 +/- 0.000
+
+Caution: only 45 survey responses are available. These cross-validation
+scores are highly uncertain and are not evidence of population-level
+predictive performance. Output probabilities are not calibrated; use
+predictions for demonstration only.

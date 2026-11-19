@@ -8,6 +8,7 @@ SCRIPTS = (
     "src/clean_data.py",
     "src/generate_eda.py",
     "src/statistical_analysis.py",
+    "src/train_model.py",
 )
 
 
